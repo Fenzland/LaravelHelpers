@@ -1,0 +1,21 @@
+{
+    "name": "fenzland/laravel-helpers",
+    "description": "Helper functions for laravel.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Fenz Yeah",
+            "email": "uukoo@163.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.0",
+        "laravel/framework": ">=5.0"
+    },
+    "autoload": {
+        "files": [
+            "libs/helpers.php"
+        ]
+    }
+}
