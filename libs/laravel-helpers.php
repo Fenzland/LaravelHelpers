@@ -4,7 +4,8 @@ use Illuminate\Support\Debug\Dumper;
 
 ////////////////////////////////////////////////////////////////
 
-if (! function_exists('z')) {
+if( !function_exists('z') )
+{
 	/**
 	 * Dump the given expression and return it.
 	 *
@@ -13,20 +14,21 @@ if (! function_exists('z')) {
 	 */
 	function z( $x )
 	{
-		( new Dumper )->dump($x);
+		(new Dumper())->dump($x);
 
 		return $x;
 	}
 }
 
 
-if (! function_exists('routo')) {
+if( !function_exists('routo') )
+{
 	/**
 	 * Generate a URL to a named route.
 	 *
-	 * @param  string  $name
-	 * @param  array   $parameters
-	 * @param  bool    $absolute
+	 * @param  string                     $name
+	 * @param  array                      $parameters
+	 * @param  bool                       $absolute
 	 * @param  \Illuminate\Routing\Route  $route
 	 *
 	 * @return string
@@ -35,20 +37,25 @@ if (! function_exists('routo')) {
 	{
 		$currentRouteName= app('router')->currentRouteName();
 
-		if( empty($name) ){
+		if( empty($name) )
+		{
 			$name= $currentRouteName;
-		}elseif( starts_with($name,'.') ){
-			$name= preg_replace('/[^:\.]+$/',substr($name,1),$currentRouteName);
-		}elseif( starts_with($name,':') ){
-			$name= strtok($currentRouteName,':').$name;
+		}
+		elseif( starts_with( $name, '.' ) )
+		{
+			$name= preg_replace( '/[^:\.]+$/', substr( $name, 1 ), $currentRouteName );
+		}
+		elseif( starts_with( $name, ':' ) )
+		{
+			$name= strtok( $currentRouteName, ':' ).$name;
 		}
 
 		$parameterNames= app('routes')->getByName($name)->parameterNames();
 
-		$inheritParameters= collect( Route::current()->parameters() )->filter( function( $value, $key )use($parameterNames){  return in_array($key,$parameterNames);  } )->all();
+		$inheritParameters= collect( Route::current()->parameters() )->filter( function( $value, $key )use( $parameterNames ){  return in_array( $key, $parameterNames );  } )->all();
 
 		$parameters+= $inheritParameters;
 
-		return app('url')->route($name,$parameters,$absolute);
+		return app('url')->route( $name, $parameters, $absolute );
 	}
 }
