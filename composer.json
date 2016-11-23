@@ -15,7 +15,8 @@
     },
     "autoload": {
         "files": [
-            "libs/helpers.php"
+            "libs/php-helpers.php",
+            "libs/laravel-helpers.php"
         ]
     }
 }
