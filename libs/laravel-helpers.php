@@ -50,7 +50,13 @@ if( !function_exists('routo') )
 			$name= strtok( $currentRouteName, ':' ).$name;
 		}
 
-		$parameterNames= app('routes')->getByName($name)->parameterNames();
+		$route= app('routes')->getByName($name);
+
+		if( !$route ){
+			throw new \Exception("Route [{$name}] is not found");
+		}
+
+		$parameterNames= $route->parameterNames();
 
 		$inheritParameters= collect( Route::current()->parameters() )->filter( function( $value, $key )use( $parameterNames ){  return in_array( $key, $parameterNames );  } )->all();
 
