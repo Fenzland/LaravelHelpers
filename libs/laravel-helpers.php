@@ -29,7 +29,6 @@ if( !function_exists('routo') )
 	 * @param  string                     $name
 	 * @param  array                      $parameters
 	 * @param  bool                       $absolute
-	 * @param  \Illuminate\Routing\Route  $route
 	 *
 	 * @return string
 	 */
