@@ -32,7 +32,7 @@ if( !function_exists('routo') )
 	 *
 	 * @return string
 	 */
-	function routo( $name, $parameters=[], $absolute=true )
+	function routo( string$name, array$parameters=[], bool$absolute=true )
 	{
 		$currentRouteName= app('router')->currentRouteName();
 
