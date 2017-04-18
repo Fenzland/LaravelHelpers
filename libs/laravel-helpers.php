@@ -42,7 +42,16 @@ if( !function_exists('routo') )
 		}
 		elseif( starts_with( $name, '.' ) )
 		{
-			$name= preg_replace( '/[^:\.]+$/', substr( $name, 1 ), $currentRouteName );
+			$prefix= $currentRouteName;
+
+			do{
+				$prefix= preg_replace( '/[^:\\.]+\\.?$/', '', $prefix );
+
+				$name= substr( $name, 1 );
+			}
+			while( starts_with( $name, '.' ) );
+
+			$name= $prefix.$name;
 		}
 		elseif( starts_with( $name, ':' ) )
 		{
