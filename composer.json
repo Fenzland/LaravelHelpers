@@ -11,12 +11,12 @@
     ],
     "require": {
         "php": ">=7.0",
+        "fenzland/php-helpers": "^1.0",
         "illuminate/support": ">=5.0",
         "illuminate/routing": ">=5.0"
     },
     "autoload": {
         "files": [
-            "libs/php-helpers.php",
             "libs/laravel-helpers.php"
         ]
     }
